@@ -128,7 +128,18 @@ t('arkadaş', { context: 'kız' });); // girlfriend
   'arkadaş_erkek': 'boyfriend',
   'arkadaş_kız': 'girlfriend',
   
-  'arkadaş_erkek_0': 'no boyfriends',
-  'arkadaş_erkek_plural': '{{count}} boyfriends',
+  '{{count}} arkadaş_erkek_0': 'no boyfriends',
+  '{{count}} arkadaş_erkek_1': '{{count}} boyfriend',
+  '{{count}} arkadaş_erkek_plural': '{{count}} boyfriends',
 },
+```
+
+Sample
+
+```typescript
+setLocale('en-US');
+
+t('{{count}} arkadaş', { context: 'erkek', count: 0 }); // no boyfriends
+t('{{count}} arkadaş', { context: 'erkek', count: 1 }); // 1 boyfriend
+t('{{count}} arkadaş', { context: 'erkek', count: 5 });); // 5 boyfriends
 ```
