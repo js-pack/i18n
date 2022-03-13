@@ -1,6 +1,7 @@
 type ResourceByLangType = { [key: string]: string };
 type ResourceMapType = { [key: string]: ResourceByLangType };
 type OptionsType = {
+  force?: boolean;
   locale: string;
   defaultLocale: string;
   remember?: boolean;
@@ -18,6 +19,7 @@ let options: OptionsType & {
   initialized: boolean;
   resourceMap: ResourceMapType;
 } = {
+  force: false,
   initialized: false,
   locale: '',
   defaultLocale: '',
@@ -47,8 +49,8 @@ const detectLocale = () => {
   }
 };
 
-const init = ({ supportedLocales, ...rest }: OptionsType) => {
-  if (!options.initialized) {
+const init = ({ supportedLocales, force, ...rest }: OptionsType) => {
+  if (force || !options.initialized) {
     if (Array.isArray(supportedLocales) && supportedLocales.length > 0) {
       options.supportedLocales = supportedLocales;
     }
@@ -88,8 +90,9 @@ const t = (
   const resource = options.resourceMap[getLocale()];
   const textKey = context ? `${text}_${context}` : text;
   let translatedText: string =
-    resource?.[count > 1 ? `${textKey}_plural` : textKey] ||
     resource?.[`${textKey}_${count}`] ||
+    resource?.[count > 1 ? `${textKey}_plural` : textKey] ||
+    resource?.[`${textKey}`] ||
     text;
 
   translatedText = translatedText.replace(

@@ -16,8 +16,6 @@
     "type": "git",
     "url": "git+https://github.com/js-pack/i18n.git"
   },
-  "keywords": [],
-  "author": "engin üstün",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -31,7 +29,10 @@
     "@types/jest": "^27.4.1",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
+    "prettier": "^2.5.1",
     "rollup": "^2.70.0",
+    "rollup-plugin-prettier": "^2.2.2",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
     "semantic-release": "^17.0.4",
     "ts-jest": "^27.1.3",
