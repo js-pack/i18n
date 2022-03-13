@@ -6,7 +6,6 @@ on:
 
 jobs:
   publish-npm:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: prepare
