@@ -1,6 +1,6 @@
 {
   "name": "@js-pack/i18n",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "easy-to-use translation library",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",

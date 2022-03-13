@@ -106,7 +106,7 @@ it('should translate correctly en-US', () => {
   expect(i18n.t('{{count}} engin', { count: 100 })).toEqual('a lot of engins');
 });
 
-it('should lazyly set resources', () => {
+it('should lazily set resources', () => {
   // setResource override existing one
   i18n.setResource('en-US', { engin: 'english engin 2' });
   expect(i18n.t('engin')).toEqual('english engin 2');
@@ -120,7 +120,7 @@ it('should set initial resources', () => {
   expect(i18n.t('{{count}} engin', { count: 1 })).toEqual('only one engin');
 });
 
-it('should lazyly extend resources', () => {
+it('should lazily extend resources', () => {
   // extendResource extends existing one
   i18n.extendResource('en-US', { engin: 'english engin 2' });
   expect(i18n.t('engin')).toEqual('english engin 2');
