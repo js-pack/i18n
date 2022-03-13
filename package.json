@@ -49,5 +49,12 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "npm",
+    "i18n",
+    "internationalization",
+    "localization",
+    "translation"
   ]
 }
