@@ -137,7 +137,6 @@ it('should translate based on context', () => {
   expect(i18n.t('arkadaş')).toEqual('friend');
   expect(i18n.t('arkadaş', { context: 'erkek' })).toEqual('boyfriend');
   expect(i18n.t('arkadaş', { context: 'kız' })).toEqual('girlfriend');
-  expect(i18n.ct('kız', 'arkadaş')).toEqual('girlfriend');
 });
 
 it('should translate based on combination of context and plural', () => {
@@ -159,7 +158,8 @@ it('should translate based on combination of context and plural', () => {
     '6 boyfriends'
   );
   expect(
-    i18n.ct('erkek', '{{count}} arkadaş {{game}} oynamışlar', {
+    i18n.t('{{count}} arkadaş {{game}} oynamışlar', {
+      context: 'erkek',
       count: 4,
       game: 'football',
     })

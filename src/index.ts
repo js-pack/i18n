@@ -110,12 +110,6 @@ const t = (
   return translatedText;
 };
 
-const ct = (
-  context: string,
-  text: string,
-  { count = -1, ...rest }: TranslateOptions = {}
-) => t(text, { count, ...rest, context });
-
 export {
   extendResource,
   getLocale,
@@ -124,5 +118,4 @@ export {
   setLocale,
   setResource,
   t,
-  ct,
 };
