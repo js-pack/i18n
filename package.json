@@ -1,6 +1,6 @@
 {
   "name": "@js-pack/i18n",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "easy-to-use translation library",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
@@ -43,7 +43,9 @@
   },
   "homepage": "https://github.com/js-pack/i18n#readme",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
   },
   "files": [
     "dist"
