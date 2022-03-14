@@ -1,26 +1,22 @@
 type ResourceByLangType = { [key: string]: string };
-type ResourceMapType = { [key: string]: ResourceByLangType };
+export type ResourceMapType = { [key: string]: ResourceByLangType };
 type OptionsType = {
-  force?: boolean;
-  locale: string;
+  locale?: string;
   defaultLocale: string;
   remember?: boolean;
   detect?: boolean;
   supportedLocales: string[];
   resourceMap?: ResourceMapType;
 };
-type TranslateOptions = {
+export type TranslateOptions = {
   [key: string]: string | number | undefined;
   count?: number;
   context?: string;
 };
 
 let options: OptionsType & {
-  initialized: boolean;
   resourceMap: ResourceMapType;
 } = {
-  force: false,
-  initialized: false,
   locale: '',
   defaultLocale: '',
   remember: true,
@@ -49,27 +45,22 @@ const detectLocale = () => {
   }
 };
 
-const init = ({ supportedLocales, force, ...rest }: OptionsType) => {
-  if (force || !options.initialized) {
-    if (Array.isArray(supportedLocales) && supportedLocales.length > 0) {
-      options.supportedLocales = supportedLocales;
-    }
-    if (rest) {
-      options = { ...options, ...rest };
-    }
-    if (options.remember) {
-      const storedLocale = localStorage.getItem('locale');
-      if (storedLocale) {
-        setLocale(storedLocale);
-      } else {
-        detectLocale();
-      }
+const init = ({ supportedLocales, ...rest }: OptionsType) => {
+  if (Array.isArray(supportedLocales) && supportedLocales.length > 0) {
+    options.supportedLocales = supportedLocales;
+  }
+  if (rest) {
+    options = { ...options, ...rest };
+  }
+  if (options.remember) {
+    const storedLocale = localStorage.getItem('locale');
+    if (storedLocale) {
+      setLocale(storedLocale);
     } else {
       detectLocale();
     }
-    options.initialized = true;
   } else {
-    throw new Error('@js-pack/i18n is already initialized.');
+    detectLocale();
   }
 };
 

@@ -22,4 +22,4 @@ class LocalStorageMock {
 
 global.localStorage = new LocalStorageMock();
 global.document = {};
-global.navigator = { language: 'tr-TR' };
+global.navigator = { language: 'nav-LANG' };

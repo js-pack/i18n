@@ -24,9 +24,31 @@ const enUS = {
   '{{count}} engin_plural': 'a lot of engins',
 };
 
-beforeAll(() => {
+it('should initialize correctly', () => {
   expect(i18n.getLocale()).toEqual('');
+
+  // @ts-ignore
+  global.document.documentElement = {};
   i18n.init({
+    detect: false,
+    supportedLocales,
+    defaultLocale: 'tr-TR',
+  });
+
+  localStorage.setItem('locale', 'tr-TR');
+  i18n.init({
+    detect: true,
+    remember: false,
+    supportedLocales,
+    defaultLocale: 'tr-TR',
+  });
+  expect(i18n.getLocale()).toEqual('nav-LANG');
+  // @ts-ignore
+  global.document = undefined;
+
+  i18n.init({
+    detect: false,
+    remember: true,
     supportedLocales,
     locale: 'tr-TR',
     defaultLocale: 'tr-TR',
@@ -35,41 +57,6 @@ beforeAll(() => {
       'en-US': enUS,
     },
   });
-});
-
-it('should fail to initialize after first time, without force flag', () => {
-  // @ts-ignore
-  global.document.documentElement = {};
-  localStorage.setItem('locale', 'tr-TR');
-  expect(
-    i18n.init({
-      force: true,
-      detect: true,
-      supportedLocales,
-      locale: 'tr-TR',
-      defaultLocale: 'tr-TR',
-    })
-  );
-  // @ts-ignore
-  global.document = undefined;
-  expect(
-    i18n.init({
-      force: true,
-      remember: false,
-      detect: true,
-      supportedLocales,
-      locale: 'tr-TR',
-      defaultLocale: 'tr-TR',
-    })
-  );
-
-  expect(() =>
-    i18n.init({
-      supportedLocales,
-      locale: 'tr-TR',
-      defaultLocale: 'tr-TR',
-    })
-  ).toThrow('@js-pack/i18n is already initialized.');
 });
 
 it('should initialize correctly with tr-TR', () => {
