@@ -2,9 +2,15 @@
 
 easy-to-use translation library
 
-This is gettext style, very-lite i18n library. You don't need to define keys as constants. You can choose your default language (defaultLocale) for code, once you did this, you are ready-to go. Strings you used in translation functions are already your keys.
+This is gettext style, very-lite i18n library. You don't need to define keys as constants. You can choose your default language _(defaultLocale)_ to use in code, once you did this, you are ready-to go. Strings you used in `t` _(translation)_ functions are already your keys.
 
-## Initialization
+## Install
+
+```
+npm i @js-pack/i18n
+```
+
+## Usage
 
 ```typescript
 import { t, init, setLocale } from '@js-pack/i18n';
@@ -127,7 +133,7 @@ t('arkadaş', { context: 'kız' });); // girlfriend
   'arkadaş': 'friend',
   'arkadaş_erkek': 'boyfriend',
   'arkadaş_kız': 'girlfriend',
-  
+
   '{{count}} arkadaş_erkek_0': 'no boyfriends',
   '{{count}} arkadaş_erkek_1': '{{count}} boyfriend',
   '{{count}} arkadaş_erkek_plural': '{{count}} boyfriends',
